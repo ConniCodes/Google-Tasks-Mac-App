@@ -1,0 +1,18 @@
+---
+description: Run clean build and launch TasksWidgetXcode when user invokes /cleanbuildrun
+alwaysApply: false
+---
+
+# /cleanbuildrun
+
+When the user types **/cleanbuildrun** (or asks to "clean build and run"), do the following:
+
+1. Run the project’s clean build and launch script from the workspace root:
+   - **Script:** `./cleanbuildrun.sh` (or `cleanbuildrun.sh` from the project root).
+   - This script: `cd`’s into `TasksWidgetXcode`, runs `xcodebuild -workspace TasksWidgetXcode.xcworkspace -scheme TasksWidgetXcode -configuration Debug -destination 'platform=macOS' -derivedDataPath ./build clean build`, then opens `./build/Build/Products/Debug/TasksWidgetXcode.app`.
+
+2. If the user prefers not to use the script, run the equivalent commands:
+   - `cd "TasksWidgetXcode" && xcodebuild -workspace TasksWidgetXcode.xcworkspace -scheme TasksWidgetXcode -configuration Debug -destination 'platform=macOS' clean build`
+   - Then open the built app (from DerivedData or from `./build` if using `-derivedDataPath ./build`).
+
+Do not ask for confirmation; run the build and launch when the user invokes /cleanbuildrun.
