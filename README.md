@@ -20,7 +20,6 @@ A macOS app and widget that displays and manages your Google Tasks lists.
 
 2. Install CocoaPods dependencies and open the workspace:
    ```bash
-   cd TasksWidgetXcode
    pod install
    open TasksWidgetXcode.xcworkspace
    ```
